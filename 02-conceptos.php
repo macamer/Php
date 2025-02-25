@@ -17,7 +17,7 @@ echo ($ageBool); //result 1
 echo gettype($ageBool); //boolean
 ?>
 
-<!-- la forma corta de php echo ?=*/ -->
+<!-- la forma corta de php echo ?= -->
 <p><?= $name ?></p>
 
 <!-- tipado débil -->
