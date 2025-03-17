@@ -4,6 +4,10 @@
 
 <h1> 
     <?= $name; ?>
+    <br>
+    <a href="02-conceptos.php">02-conceptos.php</a>
+    <br>
+    <a href="03-demo.php">03-demo.php</a>
 </h1>
 
 <style>
