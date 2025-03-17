@@ -2,69 +2,79 @@
 <html lang="en">
 
 
-    <?php
-    const API_URL = "https://whenisthenextmcufilm.com/api";
-    #Inicializar una nueva sesión de cURL; ch = cURL handle
-    $ch = curl_init(API_URL);
-    // Indicar que queremos recibir el resultado de la petición y no mostrarla en pantalla
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    /*Ejecutar la petición
-        y guardar el resultado*/
-    $result = curl_exec($ch);
+<?php
+const API_URL = "https://whenisthenextmcufilm.com/api";
 
-    //una alternativa sería utilizar file_get_contents
-    // $result = file_get_contents(API_URL)
-    $data = json_decode($result, true);
-    curl_close($ch);
-    //var_dump($data);
-    ?>
+$ch = curl_init(API_URL);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Accept: application/json',
+    'User-Agent: Mozilla/5.0'
+]);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); //ERROR AL INTENTAR VERIFICAR USUARIO - NO HACER NUNCA EN PRODUCCION
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); //ERROR AL INTENTAR VERIFICAR HOST - NO HACER NUNCA EN PRODUCCION
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>La próxima película de Marvel</title>
-        <meta name="description" content="La próxima película de Marvel">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css" />
-    </head>
-    <main>
-        <!-- 
+$result = curl_exec($ch);
+
+if (curl_errno($ch)) {
+    echo 'Error cURL: ' . curl_error($ch);
+}
+
+curl_close($ch);
+
+$data = json_decode($result, true);
+
+if (json_last_error() !== JSON_ERROR_NONE) {
+    echo 'Error JSON: ' . json_last_error_msg();
+}
+
+//var_dump($data);
+?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La próxima película de Marvel</title>
+    <meta name="description" content="La próxima película de Marvel">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css" />
+</head>
+<main>
+    <!-- 
         <pre style="font-size:8px; overflow:scroll; height: 250px"> <?php //var_dump($data)
                                                                     ?></pre>
         -->
-        <section>
-            <img src="<?= $data["poster_url"]; ?>" alt="poster de <?= $data["title"] ?>" width="300" style="border-radius: 16px;">
-        </section>
+    <section>
+        <img src="<?= $data["poster_url"]; ?>" alt="poster de <?= $data["title"] ?>" width="300" style="border-radius: 16px;">
+    </section>
 
-        <hgroup>
-            <h3><?= $data["title"] ?> se estrena en <?= $data["days_until"] ?> días</h3>
-            <p>Fecha de estreno: <?= $data["release_date"] ?></p>
-            <p>La siguiente es: <?= $data["following_production"]["title"] ?></p>
-        </hgroup>
+    <hgroup>
+        <h3><?= $data["title"] ?> se estrena en <?= $data["days_until"] ?> días</h3>
+        <p>Fecha de estreno: <?= $data["release_date"] ?></p>
+        <p>La siguiente es: <?= $data["following_production"]["title"] ?></p>
+    </hgroup>
+</main>
+<style>
+    body {
+        display: grid;
+        place-content: center;
+    }
 
-    </main>
+    section {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
 
-    <style>
-        body {
-            display: grid;
-            place-content: center;
-        }
+    hgroup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
 
-        section {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-        }
-
-        hgroup {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        img {
-            margin: 0;
-        }
-    </style>
+    img {
+        margin: 0;
+    }
+</style>
 
 </html>
