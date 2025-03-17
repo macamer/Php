@@ -5,9 +5,10 @@
 
 <!-- /*variables*/ -->
 <?php
-$name = "Maria";
-$age = "30";
-$isDev = true;
+$name = "Maria"; //string
+$age = "30"; //integer
+$isDev = true; //boolean
+$number = 6.5; //double
 ?>
 
 <!-- forzar tipo  -->
@@ -115,6 +116,35 @@ $outputAge = match (true) {
 $bestLanguages = ["PHP", "JavaScript", "Python", 1];
 $bestLanguages[] = "Java"; //pondrá en última posición
 $bestLanguages[3] = "TypeScript"; //poner en una posición concreta
+array_push($bestLanguages, "Php");
+print_r($bestLanguages);
+
+//evitar que se dupliquen
+array_push($bestLanguages, "Php");
+array_unique($bestLanguages); //--> este NO elimina y modifica el array
+print_r(array_unique($bestLanguages));
+
+?>
+
+<!-- Diccionario -->
+<?php 
+$my_string = "soy un String";
+$my_dict = array("string" => $my_string, "bool" => true, "number" => 2);
+print_r($my_dict);
+?>
+
+<!-- For -->
+<?php 
+for ($index = 0; $index < 10; $index++) {
+    echo $index . "\n";
+}
+?>
+
+<!-- For each -->
+<?php 
+foreach($bestLanguages as $language) {
+    echo $language . "\n";
+}
 ?>
 
 <ul>
@@ -123,6 +153,48 @@ $bestLanguages[3] = "TypeScript"; //poner en una posición concreta
     <?php endforeach; ?>
 </ul>
 
+<!-- While -->
+ <?php 
+ $index = 0;
+ while ($index <= sizeof($bestLanguages) - 1) {
+    echo $bestLanguages[$index] . "\n";
+    $index++;
+ }
+ ?>
+
+ <!-- Funciones -->
+<?php 
+function print_number($my_number){
+    echo $my_number;
+}
+
+print_number(10);
+
+//se puede tipar
+function print_int(int $my_number){
+    echo $my_number;
+}
+
+print_int(10.5);
+
+?>
+<!-- Clase -->
+<?php 
+class MyClass {
+    public $name;
+    public $age;
+
+    function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+}
+
+$my_class = new MyClass ("Maria", 32);
+
+echo $my_class->name . "\n"; //recoger valores de la clase
+?>
+<!-- Objetos -->
 <?php 
 $peson = [
     "name" => "Maria",
