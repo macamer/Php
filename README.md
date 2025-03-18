@@ -11,3 +11,6 @@ cltr + c
 
 
 ## Basic functions
+| Function  | Example | Explanation  |
+| ------------- | ------------- | ------------|
+| Implode()  | implode(", ", $array)  | convert an array to a string |
