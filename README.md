@@ -5,6 +5,5 @@
 ## Levantar la web desde terminal
 ```
 php -S localhost:8000
+cltr + c
 ```
-
-Close -> CTRL + C
