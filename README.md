@@ -12,6 +12,27 @@ To see website printed on terminal
 php file.php
 ```
 
+## Variables
+Variables in PHP are represented by a dollar sign followed by the name of the variable. The variable name is case-sensitive.
+
+Variable declaration rules:
+
+1. Start with dollar sign($)
+2. First letter of variable name comes from a-zA-z_
+3. Next letters of variable name comes from a-zA-Z0-9_
+4. No space,no syntex
+
+PHP is a **dynamically typed** language, which means that by default there is no need to specify the type of a variable, as this will be determined at runtime.
+You can define the variables by putting the type before the name.
+
+*int $number*
+
+**To enable strict type for typed data**
+```
+declare(strict_types=1);
+```
+> [!WARNING]
+> It only affect the file and it has to be on the first line of the file
 
 ## Basic functions
 | Function  | Example | Explanation  |
