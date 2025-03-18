@@ -2,7 +2,8 @@
 <html lang="en">
 
 <?php 
-require 'functions.php'; //--> es como copiar todo el codigo de functions.php
+//require 'functions.php'; //--> es como copiar todo el codigo de functions.php
+require_once 'functions.php'; //evitar repetir importaciones
 
 $data = get_data(API_URL);
 $untilMessage = get_until_message($data["days_until"]);
