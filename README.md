@@ -11,6 +11,7 @@ To see website printed on terminal
 ```
 php file.php
 ```
+<br/>
 
 ## Variables
 Variables in PHP are represented by a dollar sign followed by the name of the variable. The variable name is case-sensitive.
@@ -34,11 +35,15 @@ declare(strict_types=1);
 > [!WARNING]
 > It only affect the file and it has to be on the first line of the file
 
+<br/>
+
 ## Basic functions
 | Function  | Example | Explanation  |
 | ------------- | ------------- | ------------|
-| Implode()  | implode(", ", $array)  | convert an array to a string |
+| **implode()**  | [implode(", ", $array)](06-classes/classes.php) | convert an array to a string |
+| **array_rand()**  | [$names[array_rand($names)]](06-classes/classes.php)  | Picks one or more **random** entries out of an array, and returns the key (or keys) of the random entries. |
 
+<br/>
 
 ## Classes
 Atributes & Constructor
@@ -62,4 +67,23 @@ public function __construct(
         public string $planet,
     ) {}
 ```
+**Static Method** \
+Static methods are callable without an instance of the object created. \
+In order to use an static method this is the structure:
+```
+SuperHero::random();
+```
+*Example [classes.php](06-classes/classes.php)* \
+**Public Method** \
+Public methods are callable with an instance of the object created. \
+In order to use a public method this is the structure:
+```
+$hero = new SuperHero("Superman", ["Volar", "Supervista", "Fuerza"], "Krypton");
+$hero->description();
+```
+*Example [classes.php](06-classes/classes.php)* \
+**Functions**
+| Function  | Example | Explanation  |
+| ------------- | ------------- | ------------|
+| get_object_vars()  | [get_object_vars($this)](06-classes/classes.php)  | Returns an associative array of defined object accessible non-static properties for the specified object in scope. Interesting in order to see information of an object |
 
