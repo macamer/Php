@@ -12,6 +12,8 @@
     <a href="03-demo2.php">03-demo2.php</a>
     <br>
     <a href="04-importfiles/index.php">04-importfiles.php</a>
+    <br>
+    <a href="05-importstructure/index.php">05-importstructure.php</a>
 </h1>
 
 <style>
