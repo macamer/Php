@@ -25,6 +25,10 @@ class SuperHero {
         return "$this->name ataca con sus poderes!";
     }
 
+    public function show_all() {
+        return get_object_vars($this);
+    }
+
     public function description() {
 
         $powers = implode(", ", $this->powers);
@@ -33,7 +37,27 @@ class SuperHero {
         $this->planet y tiene los siguientes poderes:
         $powers";
     }
+
+    public static function random () {
+        $names = ["Thor", "Spiderman", "Wolverine", "Ironman", "Hulk"];
+        $powers = [
+            ["Superfuerza", "Volar", "Rayos láser"],
+            ["Superfuerza", "Super agilidad", "Telarañas"],
+            ["Regeneración", "Volar", "Garras de adamantium"],
+            ["Superfuerza", "Supervelocidad", "Hablar con los peces"],
+            ["Superfuerza", "Volar", "Cambio de tamaño"],
+        ];
+        $planets = ["Asgard", "Tierra","Moon","Krypton", "Marte"];
+
+        $name = $names[array_rand($names)];
+        $power = $powers[array_rand($powers)];
+        $planet = $planets[array_rand($planets)];
+
+        echo "El superhéroe elegido es $name, que viene de $planet y tiene los siguientes poderes: " . implode(", ", $power);
+    }
 }
 
 $hero = new SuperHero("Superman", ["Volar", "Supervista", "Fuerza"], "Krypton");
-echo $hero->description();
+//echo $hero->description();
+
+SuperHero::random();
