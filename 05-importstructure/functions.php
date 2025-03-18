@@ -2,7 +2,6 @@
 
 function render_template (string $template, array $data = [])
 {
-    var_dump($data);
     extract($data); //extrae los datos y los devuelve como variables por ejemplo title en lugar de array $data['title']
     require "templates/$template.php";
 }
