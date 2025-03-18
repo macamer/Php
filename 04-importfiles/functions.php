@@ -21,6 +21,4 @@ function get_until_message(int $days): string
     };
 }
 
-$data = get_data(API_URL);
-$untilMessage = get_until_message($data["days_until"]);
 ?>

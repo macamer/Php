@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php 
+require 'functions.php'; //--> es como copiar todo el codigo de functions.php
+
+$data = get_data(API_URL);
+$untilMessage = get_until_message($data["days_until"]);
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
