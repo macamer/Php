@@ -53,7 +53,8 @@ class SuperHero {
         $power = $powers[array_rand($powers)];
         $planet = $planets[array_rand($planets)];
 
-        echo "El superhéroe elegido es $name, que viene de $planet y tiene los siguientes poderes: " . implode(", ", $power);
+        //echo "El superhéroe elegido es $name, que viene de $planet y tiene los siguientes poderes: " . implode(", ", $power);
+        return new self($name, $power, $planet); //self se refiere a la propia clase
     }
 }
 
