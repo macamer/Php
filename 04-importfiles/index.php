@@ -3,7 +3,11 @@
 
 <?php 
 //require 'functions.php'; //--> es como copiar todo el codigo de functions.php
-require_once 'functions.php'; //evitar repetir importaciones
+//require_once 'functions.php'; //evitar repetir importaciones
+
+//el include a diferencia del require, si no existe el archivo solo aparece un warning y podría seguir viendose la página
+//include 'functions.php'; 
+include_once 'functions.php';
 
 $data = get_data(API_URL);
 $untilMessage = get_until_message($data["days_until"]);
