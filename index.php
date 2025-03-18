@@ -13,7 +13,9 @@
     <br>
     <a href="04-importfiles/index.php">04-importfiles.php</a>
     <br>
-    <a href="05-importstructure/index.php">05-importstructure.php</a>
+    <a href="05-importstructure/index.php">05-importstructure</a>
+    <br>
+    <a href="06-classes/index.php">06-classes</a>
 </h1>
 
 <style>
