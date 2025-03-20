@@ -23,6 +23,24 @@ Variable declaration rules:
 3. Next letters of variable name comes from a-zA-Z0-9_
 4. No space,no syntex
 
+**Variables**
+```
+$name = "Maria"; 
+```
+**Constant** \
+Whitout $ and with uppercase
+```
+const NOMBRE = 'Maria';
+```
+**Global Constant**
+```
+define('LOGO_URL', 'https://cdn.freebiesupply.com/logos/large/2x/php-1-logo-svg-vector.svg'); 
+```
+**Concatenation**
+```
+$num = 39;
+$newNum = $num  . "1";
+```
 PHP is a **dynamically typed** language, which means that by default there is no need to specify the type of a variable, as this will be determined at runtime.
 You can define the variables by putting the type before the name.
 
@@ -34,12 +52,12 @@ declare(strict_types=1);
 ```
 > [!WARNING]
 > It only affect the file and it has to be on the first line of the file
-
 <br/>
 
 ## Basic functions
 | Function  | Example | Explanation  |
 | ------------- | ------------- | ------------|
+| **gettype()**  | [echo gettype($ageBool);](02-conceptos.php) | get the type of the variable |
 | **implode()**  | [implode(", ", $array)](06-classes/classes.php) | convert an array to a string |
 | **array_rand()**  | [$names[array_rand($names)]](06-classes/classes.php)  | Picks one or more **random** entries out of an array, and returns the key (or keys) of the random entries. |
 
@@ -60,13 +78,13 @@ public function __construct($name, $powers, $planet) {
 ```
 > [!TIP]
 > With PHP 8 you can use this
-```
-public function __construct(
-        public string $name, 
-        public array $powers, 
-        public string $planet,
-    ) {}
-```
+>```
+>public function __construct(
+>        public string $name, 
+>        public array $powers, 
+>        public string $planet,
+>    ) {}
+>```
 **Static Method** \
 Static methods are callable without an instance of the object created. \
 In order to use an static method this is the structure:
