@@ -142,3 +142,26 @@ if ($q !== "") {
 }
 ```
 *Example [08-basic-ajax](08-basic-ajax/index.html)*
+
+|Property	|Description|
+|---------|-----------|
+|onreadystatechange	|Defines a function to be called when the readyState property changes|
+|readyState	|Holds the status of the XMLHttpRequest.|
+||0: request not initialized|
+||1: server connection established|
+||2: request received|
+||3: processing request||
+||4: request finished and response is ready|
+|status |	200: "OK"|
+||403: "Forbidden"|
+||404: "Page not found"|
+|statusText|	Returns the status-text (e.g. "OK" or "Not Found")*onreadystatechange* is an event that run every time the readyState of the request changes.|
+
+**setRequestHeader()** \
+The XMLHttpRequest method setRequestHeader() sets the value of an HTTP request header. When using setRequestHeader(), you must call it after calling *open()*, but before calling *send()*. If this method is called several times with the same header, the values are merged into one single request header.
+```
+xmlhttprequest.setRequestHeader(
+    'Content-Type',
+    'application/x-www-form-urlencoded'
+);
+```
