@@ -105,3 +105,40 @@ $hero->description();
 | ------------- | ------------- | ------------|
 | get_object_vars()  | [get_object_vars($this)](06-classes/classes.php)  | Returns an associative array of defined object accessible non-static properties for the specified object in scope. Interesting in order to see information of an object |
 
+## Ajax with PHP
+Use Javascript to conect with web server.
+The followings lines are a basic structure of ajax:
+```
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "gethint.php?q=" + str, true);
+    xmlhttp.send();
+```
+
+Web site conect to *gethint.php* and search variable called *q*.
+```
+//gethint.php
+$q = $_REQUEST["q"];
+
+$hint = "";
+
+// lookup all hints from array if $q is different from ""
+if ($q !== "") {
+  $q = strtolower($q);
+  $len=strlen($q);
+  foreach($a as $name) {
+    if (stristr($q, substr($name, 0, $len))) {
+      if ($hint === "") {
+        $hint = $name;
+      } else {
+        $hint .= ", $name";
+      }
+    }
+  }
+}
+```
+*Example [08-basic-ajax](08-basic-ajax/index.html)*
