@@ -78,13 +78,13 @@ public function __construct($name, $powers, $planet) {
 ```
 > [!TIP]
 > With PHP 8 you can use this
-```
-public function __construct(
-        public string $name, 
-        public array $powers, 
-        public string $planet,
-    ) {}
-```
+>```
+>public function __construct(
+>        public string $name, 
+>        public array $powers, 
+>        public string $planet,
+>    ) {}
+>```
 **Static Method** \
 Static methods are callable without an instance of the object created. \
 In order to use an static method this is the structure:
