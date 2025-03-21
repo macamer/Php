@@ -60,6 +60,8 @@ declare(strict_types=1);
 | **gettype()**  | [echo gettype($ageBool);](02-conceptos.php) | get the type of the variable |
 | **implode()**  | [implode(", ", $array)](06-classes/classes.php) | convert an array to a string |
 | **array_rand()**  | [$names[array_rand($names)]](06-classes/classes.php)  | Picks one or more **random** entries out of an array, and returns the key (or keys) of the random entries. |
+| **extract(*variable*)**  | [extract($data);](05-importstructure/functions.php)  | Extracts the data and transform it into variables. Instead of array you have a variable. For example title instead of $data['title] |
+
 
 <br/>
 
@@ -105,7 +107,7 @@ $hero->description();
 | ------------- | ------------- | ------------|
 | get_object_vars()  | [get_object_vars($this)](06-classes/classes.php)  | Returns an associative array of defined object accessible non-static properties for the specified object in scope. Interesting in order to see information of an object |
 
-## Ajax with PHP
+## AJAX with PHP
 Use Javascript to conect with web server.
 The followings lines are a basic structure of ajax:
 ```
@@ -165,3 +167,60 @@ xmlhttprequest.setRequestHeader(
     'application/x-www-form-urlencoded'
 );
 ```
+
+**Send data to PHP** \
+When you want to send the data from your website to the server.
+```
+theObject.send('username=Maria');
+```
+Then you can check if the data is empty or verify the information.
+```
+<?php
+if (isset($_POST['username'])) {
+    echo "Usuario: " . $_POST['username'];
+} else {
+    echo "No se ingresó ningún usuario.";
+}
+```
+| Function  | Example | Explanation  |
+| ------------- | ------------- | ------------|
+| **isset()**  | [isset($_POST['username'];](09-basic-ajax-post/backend.php) | Determine if a variable is declared and is different than null |
+
+With **'application/x-www-form-urlencoded'** we need to use variables like:
+```
+//option 1
+theObject.send('username=Maria');
+//option 2
+theObject.send('username=' + encodeURIComponent(name));
+
+<?php 
+if (isset($_POST['username'])) {
+    echo "Usuario: " . $_POST['username'];
+}
+```
+If you prefer, you can use **json**
+```
+theObject.setRequestHeader('Content-Type', 'application/json');
+theObject.send(JSON.stringify({ username: name }));
+
+<?php 
+$data = json_decode(file_get_contents("php://input"), true);
+if (isset($data['username'])) {
+    echo "Usuario: " . $data['username'];
+} 
+```
+
+<br/>
+
+## Insert PHP from other file
+In order to insert the code of another file we can use
+| Function  | Example | Explanation  |
+| ------------- | ------------- | ------------|
+| **include**  | [include 'functions.php';](04-importfiles/index.php) | The include expression includes and evaluates the specified file.|
+| **include_once**  | [include_once 'functions.php';](04-importfiles/index.php) | The include expression includes and evaluates the specified file only once |
+| **require**  | [require 'functions.php';](04-importfiles/index.php) | The require expression includes and evaluates the specified file. |
+| **require_once**  | [require_once 'functions.php';](04-importfiles/index.php) | The require expression includes and evaluates the specified file only once. |
+
+
+> [!NOTE]
+> The difference betweeen include and require is that the include construct will emit an E_WARNING if it cannot find a file; this is different behavior from require, which will emit an E_ERROR. So, the project of the includes will still be running although it doesn't find the file. 
