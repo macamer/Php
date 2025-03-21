@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Ajax</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(to right, #bdbbbb, #151515);
+        color: white;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        background: #7e93ff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #6e83ea;
+    }
+</style>
+
+<body>
+    <input type="text" name="name" id="name">
+    <button onclick="sendRequest()">Send Ajax Request</button>
+    <p id="text"></p>
+    <script>
+        function sendRequest() {
+            let name = document.getElementById('name').value;
+            var theObject = new XMLHttpRequest();
+            theObject.open('POST', 'backend.php', true);
+            theObject.setRequestHeader(
+                'Content-Type',
+                'application/x-www-form-urlencoded'
+            );
+            theObject.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("text").innerHTML = this.responseText;
+                }
+            };
+ 
+            theObject.send('username=' + encodeURIComponent(name));
+        }
+    </script>
+</body>
+
+</html>

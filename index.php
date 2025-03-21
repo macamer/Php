@@ -20,6 +20,8 @@
     <a href="07-classesapi/index.php">07-classesapi</a>
     <br>
     <a href="08-basic-ajax/index.html">08-basicajax</a>
+    <br>
+    <a href="09-basic-ajax-post/index.html">09-basicajax-post</a>
 </h1>
 
 <style>
