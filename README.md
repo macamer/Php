@@ -58,10 +58,14 @@ declare(strict_types=1);
 | Function  | Example | Explanation  |
 | ------------- | ------------- | ------------|
 | **gettype()**  | [echo gettype($ageBool);](02-conceptos.php) | get the type of the variable |
-| **implode()**  | [implode(", ", $array)](06-classes/classes.php) | convert an array to a string |
+| **implode()**  | [implode(", ", $array)](06-classes/classes.php) | convert an array into a string |
 | **array_rand()**  | [$names[array_rand($names)]](06-classes/classes.php)  | Picks one or more **random** entries out of an array, and returns the key (or keys) of the random entries. |
 | **extract(*variable*)**  | [extract($data);](05-importstructure/functions.php)  | Extracts the data and transform it into variables. Instead of array you have a variable. For example title instead of $data['title] |
 | **array_merge(*array,array2*)**  | [array_merge($data,['until_message'=>$until_message]);](05-importstructure/index.php)  | Merges the elements of one or more arrays together so that the values of one are appended to the end of the previous one. It returns the resulting array. |
+| **json_decore(*variable*)**  | [$data = json_decode($result, true);](05-importstructure/functions.php)  | When **true**, JSON objects will be returned as associative *arrays*; when **false**, JSON objects will be returned as *objects*. |
+| **file_get_contents(*file*)**  | [$result = file_get_contents(API_URL);](05-importstructure/functions.php)  |Reads entire file into a string|
+
+
 <br/>
 
 ## Classes
